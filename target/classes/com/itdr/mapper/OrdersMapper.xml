@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itdr.mapper.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.itdr.pojo.Orders" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="productid" property="productid" jdbcType="INTEGER" />
+    <result column="payamount" property="payamount" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="merchantid" property="merchantid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="paytime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="paystatus" property="paystatus" jdbcType="INTEGER" />
+    <result column="receivingaddress" property="receivingaddress" jdbcType="VARCHAR" />
+    <result column="receivingphone" property="receivingphone" jdbcType="INTEGER" />
+    <result column="receivingname" property="receivingname" jdbcType="VARCHAR" />
+    <result column="tradeserialnumble" property="tradeserialnumble" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, productid, payamount, userid, merchantid, createtime, paytime, paystatus, receivingaddress, 
+    receivingphone, receivingname, tradeserialnumble
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msorder
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msorder
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itdr.pojo.Orders" >
+    insert into msorder (id, productid, payamount, 
+      userid, merchantid, createtime, 
+      paytime, paystatus, receivingaddress, 
+      receivingphone, receivingname, tradeserialnumble
+      )
+    values (#{id,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{payamount,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{merchantid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{paytime,jdbcType=TIMESTAMP}, #{paystatus,jdbcType=INTEGER}, #{receivingaddress,jdbcType=VARCHAR}, 
+      #{receivingphone,jdbcType=INTEGER}, #{receivingname,jdbcType=VARCHAR}, #{tradeserialnumble,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itdr.pojo.Orders" >
+    insert into msorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+      <if test="payamount != null" >
+        payamount,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="merchantid != null" >
+        merchantid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="paytime != null" >
+        paytime,
+      </if>
+      <if test="paystatus != null" >
+        paystatus,
+      </if>
+      <if test="receivingaddress != null" >
+        receivingaddress,
+      </if>
+      <if test="receivingphone != null" >
+        receivingphone,
+      </if>
+      <if test="receivingname != null" >
+        receivingname,
+      </if>
+      <if test="tradeserialnumble != null" >
+        tradeserialnumble,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="payamount != null" >
+        #{payamount,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paystatus != null" >
+        #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivingaddress != null" >
+        #{receivingaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingphone != null" >
+        #{receivingphone,jdbcType=INTEGER},
+      </if>
+      <if test="receivingname != null" >
+        #{receivingname,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeserialnumble != null" >
+        #{tradeserialnumble,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Orders" >
+    update msorder
+    <set >
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="payamount != null" >
+        payamount = #{payamount,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="merchantid != null" >
+        merchantid = #{merchantid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytime != null" >
+        paytime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paystatus != null" >
+        paystatus = #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivingaddress != null" >
+        receivingaddress = #{receivingaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingphone != null" >
+        receivingphone = #{receivingphone,jdbcType=INTEGER},
+      </if>
+      <if test="receivingname != null" >
+        receivingname = #{receivingname,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeserialnumble != null" >
+        tradeserialnumble = #{tradeserialnumble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.Orders" >
+    update msorder
+    set productid = #{productid,jdbcType=INTEGER},
+      payamount = #{payamount,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      merchantid = #{merchantid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      paytime = #{paytime,jdbcType=TIMESTAMP},
+      paystatus = #{paystatus,jdbcType=INTEGER},
+      receivingaddress = #{receivingaddress,jdbcType=VARCHAR},
+      receivingphone = #{receivingphone,jdbcType=INTEGER},
+      receivingname = #{receivingname,jdbcType=VARCHAR},
+      tradeserialnumble = #{tradeserialnumble,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
