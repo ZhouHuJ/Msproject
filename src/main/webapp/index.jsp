@@ -4,8 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/merchant/sel.do" method="post">
-    id：<input name="id"></br>
+<form action="/pagehome/tohome.do" method="post">
     <input type="submit" value="提交" >
 </form>
 </body>

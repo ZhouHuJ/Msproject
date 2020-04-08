@@ -11,6 +11,8 @@ public interface MerchantMapper {
 
     Merchant selectByPrimaryKey(Integer id);
 
+    Merchant selectBymerchantaccount(String merchantaccount);
+
     int updateByPrimaryKeySelective(Merchant record);
 
     int updateByPrimaryKey(Merchant record);

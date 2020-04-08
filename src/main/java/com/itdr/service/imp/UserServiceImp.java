@@ -35,6 +35,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public Users selectByuseraccount(String useraccount) {
+        return usersMapper.selectByuseraccount(useraccount);
+    }
+
+    @Override
     public int updateByPrimaryKeySelective(Users record) {
         int i = usersMapper.updateByPrimaryKeySelective(record);
         return i;

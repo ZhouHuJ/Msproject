@@ -35,6 +35,11 @@ public class MerchantServiceImp implements MerchantService {
     }
 
     @Override
+    public Merchant selectBymerchantaccount(String merchantaccount) {
+        return merchantMapper.selectBymerchantaccount(merchantaccount);
+    }
+
+    @Override
     public int updateByPrimaryKeySelective(Merchant record) {
         int i = merchantMapper.updateByPrimaryKeySelective(record);
         return i;
