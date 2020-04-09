@@ -1,6 +1,9 @@
 package com.itdr.mapper;
 
+import com.itdr.pojo.vo.MerchantVo;
 import com.itdr.pojo.Merchant;
+
+import java.util.List;
 
 public interface MerchantMapper {
     int deleteByPrimaryKey(Integer id);
@@ -10,6 +13,8 @@ public interface MerchantMapper {
     int insertSelective(Merchant record);
 
     Merchant selectByPrimaryKey(Integer id);
+
+    List<Merchant> selectByvo(MerchantVo merchantVo);
 
     Merchant selectBymerchantaccount(String merchantaccount);
 

@@ -1,10 +1,13 @@
 package com.itdr.service.imp;
 
+import com.itdr.pojo.vo.UsersVo;
 import com.itdr.mapper.UsersMapper;
 import com.itdr.pojo.Users;
 import com.itdr.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -13,9 +16,9 @@ public class UserServiceImp implements UserService {
     UsersMapper usersMapper;
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
-        int i = usersMapper.deleteByPrimaryKey(id);
-        return i;
+    public void deleteByPrimaryKey(Integer id) {
+        usersMapper.deleteByPrimaryKey(id);
+
     }
 
     @Override
@@ -35,18 +38,22 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public List<Users> selectByvo(UsersVo usersVo) {
+        return usersMapper.selectByvo(usersVo);
+    }
+
+    @Override
     public Users selectByuseraccount(String useraccount) {
         return usersMapper.selectByuseraccount(useraccount);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Users record) {
-        int i = usersMapper.updateByPrimaryKeySelective(record);
-        return i;
+    public void updateByPrimaryKeySelective(Users record) {
+        usersMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(Users record) {
-        return 0;
+    public void updateByPrimaryKey(Users record) {
+
     }
 }

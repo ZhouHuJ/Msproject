@@ -26,6 +26,40 @@
     from msuser
     where useraccount = #{useraccount,jdbcType=VARCHAR}
   </select>
+  <sql id="consutomsql" >
+    <if test="constomUsers != null">
+      <if test="constomUsers.username!=null and constomUsers.username!=''">
+        and username = "${constomUsers.username}"
+      </if>
+      <if test="constomUsers.useraccount!=null and constomUsers.useraccount!='' ">
+        and useraccount = "${constomUsers.useraccount}"
+      </if>
+      <if test="constomUsers.userpassword!=null and constomUsers.userpassword!='' ">
+        and userpassword = "${constomUsers.userpassword}"
+      </if>
+      <if test="constomUsers.usersex!=null and constomUsers.usersex!='' ">
+        and usersex = "${constomUsers.usersex}"
+      </if>
+      <if test="constomUsers.userage!=null and constomUsers.userage!='' ">
+        and userage = "${constomUsers.userage}"
+      </if>
+      <if test="constomUsers.useraddress!=null and constomUsers.useraddress!='' ">
+        and useraddress = "${constomUsers.useraddress}"
+      </if>
+      <if test="constomUsers.useremail!=null and constomUsers.useremail!='' ">
+        and useremail = "${constomUsers.useremail}"
+      </if>
+    </if>
+  </sql>
+
+  <select id="selectByvo" resultMap="BaseResultMap" parameterType="com.itdr.pojo.vo.UsersVo">
+    select
+    <include refid="Base_Column_List" />
+    from msuser
+    <where>
+      <include refid="consutomsql"></include>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from msuser
     where id = #{id,jdbcType=INTEGER}

@@ -1,9 +1,12 @@
 package com.itdr.service;
 
+import com.itdr.pojo.vo.UsersVo;
 import com.itdr.pojo.Users;
 
+import java.util.List;
+
 public interface UserService {
-    int deleteByPrimaryKey(Integer id);
+    void deleteByPrimaryKey(Integer id);
 
     int insert(Users record);
 
@@ -11,9 +14,12 @@ public interface UserService {
 
     Users selectByPrimaryKey(Integer id);
 
+    //根据vo条件查询
+    List<Users> selectByvo(UsersVo usersVo);
+
     Users selectByuseraccount(String useraccount);
 
-    int updateByPrimaryKeySelective(Users record);
+    void updateByPrimaryKeySelective(Users record);
 
-    int updateByPrimaryKey(Users record);
+    void updateByPrimaryKey(Users record);
 }

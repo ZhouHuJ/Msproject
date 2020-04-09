@@ -11,6 +11,8 @@ public class Products {
 
     private String productpicture;
 
+    private Integer miaoshaprice;
+
     private Integer originalprice;
 
     private Integer merchantid;
@@ -19,11 +21,15 @@ public class Products {
 
     private Date auditdate;
 
-    private Integer auditstatus;
+    private Integer auditstatus;//1代表为审核，2代表审核通过，3代表审核失败
 
     private Date starttime;
 
     private Date endtime;
+
+    private String starttimestring;
+
+    private String endtimestring;
 
     private Integer productcount;
 
@@ -31,6 +37,21 @@ public class Products {
 
     private String description;
 
+    public String getStarttimestring() {
+        return starttimestring;
+    }
+
+    public void setStarttimestring(String starttimestring) {
+        this.starttimestring = starttimestring;
+    }
+
+    public String getEndtimestring() {
+        return endtimestring;
+    }
+
+    public void setEndtimestring(String endtimestring) {
+        this.endtimestring = endtimestring;
+    }
     public Integer getId() {
         return id;
     }
@@ -61,6 +82,14 @@ public class Products {
 
     public void setProductpicture(String productpicture) {
         this.productpicture = productpicture == null ? null : productpicture.trim();
+    }
+
+    public Integer getMiaoshaprice() {
+        return miaoshaprice;
+    }
+
+    public void setMiaoshaprice(Integer miaoshaprice) {
+        this.miaoshaprice = miaoshaprice;
     }
 
     public Integer getOriginalprice() {

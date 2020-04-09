@@ -24,6 +24,34 @@
     from msmerchant
     where merchantaccount = #{merchantaccount,jdbcType=VARCHAR}
   </select>
+  <sql id="consutomsql" >
+    <if test="constomMerchant != null">
+      <if test="constomMerchant.merchantname!=null and constomMerchant.merchantname!=''">
+        and merchantname = "${constomMerchant.merchantname}"
+      </if>
+      <if test="constomMerchant.merchantshopname!=null and constomMerchant.merchantshopname!='' ">
+        and merchantshopname = "${constomMerchant.merchantshopname}"
+      </if>
+      <if test="constomMerchant.merchantaccount!=null and constomMerchant.merchantaccount!='' ">
+        and merchantaccount = "${constomMerchant.merchantaccount}"
+      </if>
+      <if test="constomMerchant.merchantpassword!=null and constomMerchant.merchantpassword!='' ">
+        and merchantpassword = "${constomMerchant.merchantpassword}"
+      </if>
+      <if test="constomMerchant.merchantscope!=null and constomMerchant.merchantscope!='' ">
+        and merchantscope = "${constomMerchant.merchantscope}"
+      </if>
+    </if>
+  </sql>
+
+  <select id="selectByvo" resultMap="BaseResultMap" parameterType="com.itdr.pojo.vo.MerchantVo">
+    select
+    <include refid="Base_Column_List" />
+    from msmerchant
+    <where>
+      <include refid="consutomsql"></include>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from msmerchant
     where id = #{id,jdbcType=INTEGER}

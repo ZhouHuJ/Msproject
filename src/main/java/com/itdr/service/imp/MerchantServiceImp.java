@@ -1,10 +1,13 @@
 package com.itdr.service.imp;
 
+import com.itdr.pojo.vo.MerchantVo;
 import com.itdr.mapper.MerchantMapper;
 import com.itdr.pojo.Merchant;
 import com.itdr.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MerchantServiceImp implements MerchantService {
@@ -13,9 +16,8 @@ public class MerchantServiceImp implements MerchantService {
     MerchantMapper merchantMapper;
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
-        int i = merchantMapper.deleteByPrimaryKey(id);
-        return i;
+    public void deleteByPrimaryKey(Integer id) {
+        merchantMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -35,18 +37,22 @@ public class MerchantServiceImp implements MerchantService {
     }
 
     @Override
+    public List<Merchant> selectByvo(MerchantVo merchantVo) {
+        return merchantMapper.selectByvo(merchantVo);
+    }
+
+    @Override
     public Merchant selectBymerchantaccount(String merchantaccount) {
         return merchantMapper.selectBymerchantaccount(merchantaccount);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Merchant record) {
-        int i = merchantMapper.updateByPrimaryKeySelective(record);
-        return i;
+    public void updateByPrimaryKeySelective(Merchant record) {
+        merchantMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(Merchant record) {
-        return 0;
+    public void updateByPrimaryKey(Merchant record) {
+
     }
 }

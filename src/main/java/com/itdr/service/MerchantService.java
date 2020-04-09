@@ -1,10 +1,13 @@
 package com.itdr.service;
 
+import com.itdr.pojo.vo.MerchantVo;
 import com.itdr.pojo.Merchant;
+
+import java.util.List;
 
 public interface MerchantService {
 
-    int deleteByPrimaryKey(Integer id);
+    void deleteByPrimaryKey(Integer id);
 
     int insert(Merchant record);
 
@@ -12,9 +15,12 @@ public interface MerchantService {
 
     Merchant selectByPrimaryKey(Integer id);
 
+    //根据vo条件查询
+    List<Merchant> selectByvo(MerchantVo merchantVo);
+
     Merchant selectBymerchantaccount(String merchantaccount);
 
-    int updateByPrimaryKeySelective(Merchant record);
+    void updateByPrimaryKeySelective(Merchant record);
 
-    int updateByPrimaryKey(Merchant record);
+    void updateByPrimaryKey(Merchant record);
 }

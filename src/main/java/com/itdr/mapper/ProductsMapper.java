@@ -1,6 +1,9 @@
 package com.itdr.mapper;
 
+import com.itdr.pojo.vo.ProductVo;
 import com.itdr.pojo.Products;
+
+import java.util.List;
 
 public interface ProductsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -10,6 +13,8 @@ public interface ProductsMapper {
     int insertSelective(Products record);
 
     Products selectByPrimaryKey(Integer id);
+
+    List<Products> selectByvo(ProductVo productVo);
 
     int updateByPrimaryKeySelective(Products record);
 

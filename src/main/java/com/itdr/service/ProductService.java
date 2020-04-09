@@ -1,17 +1,23 @@
 package com.itdr.service;
 
+import com.itdr.pojo.vo.ProductVo;
 import com.itdr.pojo.Products;
 
+import java.util.List;
+
 public interface ProductService {
-    int applyproduct(Products product);
+    void applyproduct(Products product);
 
-    int deleteByPrimaryKey(Integer id);
+    void deleteByPrimaryKey(Integer id);
 
-    int insertSelective(Products record);
+    void insertSelective(Products record);
 
     Products selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Products record);
+    //根据vo条件查询
+    List<Products> selectByvo(ProductVo productVo);
 
-    int updateByPrimaryKey(Products record);
+    void updateByPrimaryKeySelective(Products record);
+
+    void updateByPrimaryKey(Products record);
 }

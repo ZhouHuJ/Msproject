@@ -6,6 +6,7 @@
     <result column="productid" property="productid" jdbcType="INTEGER" />
     <result column="producttitle" property="producttitle" jdbcType="VARCHAR" />
     <result column="productpicture" property="productpicture" jdbcType="VARCHAR" />
+    <result column="miaoshaprice" property="miaoshaprice" jdbcType="INTEGER" />
     <result column="originalprice" property="originalprice" jdbcType="INTEGER" />
     <result column="merchantid" property="merchantid" jdbcType="INTEGER" />
     <result column="applydate" property="applydate" jdbcType="TIMESTAMP" />
@@ -13,12 +14,14 @@
     <result column="auditstatus" property="auditstatus" jdbcType="INTEGER" />
     <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
     <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="starttimestring" property="starttimestring" jdbcType="VARCHAR" />
+    <result column="endtimestring" property="endtimestring" jdbcType="VARCHAR" />
     <result column="productcount" property="productcount" jdbcType="INTEGER" />
     <result column="stockcount" property="stockcount" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, productid, producttitle, productpicture, originalprice, merchantid, applydate, 
+    id, productid, producttitle, productpicture,miaoshaprice, originalprice, merchantid, applydate,
     auditdate, auditstatus, starttime, endtime, productcount, stockcount, description
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -27,18 +30,94 @@
     from msproductinfo
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <sql id="consutomsql" >
+    <if test="constomProduct != null">
+      <if test="constomProduct.productid!=null and constomProduct.productid!=''">
+        and productid = "${constomProduct.productid}"
+      </if>
+      <if test="constomProduct.producttitle!=null and constomProduct.producttitle!='' ">
+        and producttitle  like "%${constomProduct.producttitle}%"
+      </if>
+      <if test="constomProduct.startmiaoshaprice!=null and constomProduct.startmiaoshaprice!='' ">
+        and miaoshaprice <![CDATA[ >= ]]> "${constomProduct.startmiaoshaprice}"
+      </if>
+      <if test="constomProduct.endmiaoshaprice!=null and constomProduct.endmiaoshaprice!='' ">
+        and miaoshaprice <![CDATA[ <= ]]> "${constomProduct.endmiaoshaprice}"
+      </if>
+      <if test="constomProduct.startoriginalprice!=null and constomProduct.startoriginalprice!='' ">
+        and originalprice <![CDATA[ >= ]]> "${constomProduct.startoriginalprice}"
+      </if>
+      <if test="constomProduct.endoriginalprice!=null and constomProduct.endoriginalprice!='' " >
+        and originalprice <![CDATA[ <= ]]> "${constomProduct.endoriginalprice}"
+      </if>
+      <if test="constomProduct.endstockcount!=null and constomProduct.endstockcount!='' ">
+        and stockcount <![CDATA[ <= ]]> "${constomProduct.endstockcount}"
+      </if>
+      <if test="constomProduct.description!=null and constomProduct.description!=''">
+        and description like "%${constomProduct.description}%"
+      </if>
+      <if test="constomProduct.endapplydate!=null and constomProduct.endapplydate!='' ">
+        and applydate <![CDATA[ <= ]]> "${constomProduct.endapplydate}"
+      </if>
+
+      <if test="constomProduct.endauditdate!=null and constomProduct.endauditdate!='' ">
+        and auditdate <![CDATA[ <= ]]> "${constomProduct.endauditdate}"
+      </if>
+      <if test="constomProduct.startapplydate!=null and constomProduct.startapplydate!='' ">
+        and applydate <![CDATA[ >= ]]> "${constomUser.startapplydate}"
+      </if>
+      <if test="constomProduct.startauditdate!=null and constomProduct.startauditdate!='' ">
+        and auditdate <![CDATA[ >= ]]> "${constomProduct.startauditdate}"
+      </if>
+      <if test="constomProduct.auditstate!=null and constomProduct.auditstate!='' ">
+        and auditdate = "${constomProduct.auditstate}"
+      </if>
+      <if test="constomProduct.startstarttime!=null and constomProduct.startstarttime!='' ">
+        and starttime <![CDATA[ >= ]]> "${constomProduct.startstarttime}"
+      </if>
+      <if test="constomProduct.endstarttime!=null and constomProduct.endstarttime!='' ">
+        and starttime <![CDATA[ <= ]]> "${constomProduct.endstarttime}"
+      </if>
+      <if test="constomProduct.startendtime!=null and constomProduct.startendtime!='' ">
+        and endtime <![CDATA[ >= ]]> "${constomProduct.startendtime}"
+      </if>
+      <if test="constomProduct.endendtime!=null and constomProduct.endendtime!='' ">
+        and endtime <![CDATA[ <= ]]> "${constomProduct.endendtime}"
+      </if>
+      <if test="constomProduct.startproductcount!=null and constomProduct.startproductcount!='' ">
+        and productcount <![CDATA[ >= ]]> "${constomProduct.startproductcount}"
+      </if>
+      <if test="constomProduct.endproductcount!=null and constomProduct.endproductcount!='' ">
+        and productcount <![CDATA[ <= ]]> "${constomProduct.endproductcount}"
+      </if>
+      <if test="constomProduct.startstockcount!=null and constomProduct.startstockcount!='' ">
+        and stockcount <![CDATA[ >= ]]> "${constomProduct.startstockcount}"
+      </if>
+      <if test="constomProduct.endstockcount!=null and constomProduct.endstockcount!='' ">
+        and stockcount <![CDATA[ <= ]]> "${constomProduct.endstockcount}"
+      </if>
+    </if>
+  </sql>
+  <select id="selectByvo" resultMap="BaseResultMap" parameterType="com.itdr.pojo.vo.ProductVo">
+    select
+    <include refid="Base_Column_List" />
+    from msproductinfo
+    <where>
+      <include refid="consutomsql"></include>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from msproductinfo
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.itdr.pojo.Products" >
     insert into msproductinfo (id, productid, producttitle, 
-      productpicture, originalprice, merchantid, 
+      productpicture,miaoshaprice, originalprice, merchantid,
       applydate, auditdate, auditstatus, 
       starttime, endtime, productcount, 
       stockcount, description)
     values (#{id,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{producttitle,jdbcType=VARCHAR}, 
-      #{productpicture,jdbcType=VARCHAR}, #{originalprice,jdbcType=INTEGER}, #{merchantid,jdbcType=INTEGER}, 
+      #{productpicture,jdbcType=VARCHAR},#{miaoshaprice,jdbcType=INTEGER}, #{originalprice,jdbcType=INTEGER}, #{merchantid,jdbcType=INTEGER},
       #{applydate,jdbcType=TIMESTAMP}, #{auditdate,jdbcType=TIMESTAMP}, #{auditstatus,jdbcType=INTEGER}, 
       #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{productcount,jdbcType=INTEGER}, 
       #{stockcount,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
@@ -57,6 +136,9 @@
       </if>
       <if test="productpicture != null" >
         productpicture,
+      </if>
+      <if test="miaoshaprice != null" >
+        miaoshaprice,
       </if>
       <if test="originalprice != null" >
         originalprice,
@@ -102,6 +184,9 @@
       <if test="productpicture != null" >
         #{productpicture,jdbcType=VARCHAR},
       </if>
+      <if test="miaoshaprice != null" >
+        #{miaoshaprice,jdbcType=INTEGER},
+      </if>
       <if test="originalprice != null" >
         #{originalprice,jdbcType=INTEGER},
       </if>
@@ -146,6 +231,9 @@
       <if test="productpicture != null" >
         productpicture = #{productpicture,jdbcType=VARCHAR},
       </if>
+      <if test="miaoshaprice != null" >
+        miaoshaprice = #{miaoshaprice,jdbcType=INTEGER},
+      </if>
       <if test="originalprice != null" >
         originalprice = #{originalprice,jdbcType=INTEGER},
       </if>
@@ -184,6 +272,7 @@
     set productid = #{productid,jdbcType=INTEGER},
       producttitle = #{producttitle,jdbcType=VARCHAR},
       productpicture = #{productpicture,jdbcType=VARCHAR},
+      miaoshaprice = #{miaoshaprice,jdbcType=INTEGER},
       originalprice = #{originalprice,jdbcType=INTEGER},
       merchantid = #{merchantid,jdbcType=INTEGER},
       applydate = #{applydate,jdbcType=TIMESTAMP},
