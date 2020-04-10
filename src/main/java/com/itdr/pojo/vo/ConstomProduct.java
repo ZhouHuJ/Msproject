@@ -11,17 +11,17 @@ public class ConstomProduct extends Products {
     private int startoriginalprice;
     private int endoriginalprice;
 
-    private Date startapplydate;
-    private Date endapplydate;
+    private String startapplydate;
+    private String endapplydate;
 
-    private Date startauditdate;
-    private Date endauditdate;
+    private String startauditdate;
+    private String endauditdate;
 
-    private Date startstarttime;
-    private Date endstarttime;
+    private String startstarttime;
+    private String endstarttime;
 
-    private Date startendtime;
-    private Date endendtime;
+    private String startendtime;
+    private String endendtime;
 
     private int startproductcount;
     private int endproductcount;
@@ -61,67 +61,67 @@ public class ConstomProduct extends Products {
         this.endoriginalprice = endoriginalprice;
     }
 
-    public Date getStartapplydate() {
+    public String getStartapplydate() {
         return startapplydate;
     }
 
-    public void setStartapplydate(Date startapplydate) {
+    public void setStartapplydate(String startapplydate) {
         this.startapplydate = startapplydate;
     }
 
-    public Date getEndapplydate() {
+    public String getEndapplydate() {
         return endapplydate;
     }
 
-    public void setEndapplydate(Date endapplydate) {
+    public void setEndapplydate(String endapplydate) {
         this.endapplydate = endapplydate;
     }
 
-    public Date getStartauditdate() {
+    public String getStartauditdate() {
         return startauditdate;
     }
 
-    public void setStartauditdate(Date startauditdate) {
+    public void setStartauditdate(String startauditdate) {
         this.startauditdate = startauditdate;
     }
 
-    public Date getEndauditdate() {
+    public String getEndauditdate() {
         return endauditdate;
     }
 
-    public void setEndauditdate(Date endauditdate) {
+    public void setEndauditdate(String endauditdate) {
         this.endauditdate = endauditdate;
     }
 
-    public Date getStartstarttime() {
+    public String getStartstarttime() {
         return startstarttime;
     }
 
-    public void setStartstarttime(Date startstarttime) {
+    public void setStartstarttime(String startstarttime) {
         this.startstarttime = startstarttime;
     }
 
-    public Date getEndstarttime() {
+    public String getEndstarttime() {
         return endstarttime;
     }
 
-    public void setEndstarttime(Date endstarttime) {
+    public void setEndstarttime(String endstarttime) {
         this.endstarttime = endstarttime;
     }
 
-    public Date getStartendtime() {
+    public String getStartendtime() {
         return startendtime;
     }
 
-    public void setStartendtime(Date startendtime) {
+    public void setStartendtime(String startendtime) {
         this.startendtime = startendtime;
     }
 
-    public Date getEndendtime() {
+    public String getEndendtime() {
         return endendtime;
     }
 
-    public void setEndendtime(Date endendtime) {
+    public void setEndendtime(String endendtime) {
         this.endendtime = endendtime;
     }
 

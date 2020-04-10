@@ -2,6 +2,8 @@ package com.itdr.mapper;
 
 import com.itdr.pojo.Orders;
 
+import java.util.List;
+
 public interface OrdersMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -11,7 +13,11 @@ public interface OrdersMapper {
 
     Orders selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Orders record);
+    void updateByPrimaryKeySelective(Orders record);
 
     int updateByPrimaryKey(Orders record);
+
+    List<Orders> selectorderByUserid(int userid);
+
+    List<Orders> selectorderByMerchantid(int merchantid);
 }

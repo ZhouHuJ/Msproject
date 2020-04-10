@@ -45,7 +45,7 @@
             <td>${item.productcount }</td>
             <td>${item.stockcount }</td>
             <td>${item.description }</td>
-            <td><a href="toupdate.do?id=${item.id}">修改</a>||<a href="del.do?id=${item.id}">删除</a>||<a href="sel.do?id=${item.id}">查看</a>||<a href="toupdatemsproductstate?id=${item.id}">审核</a></td>
+            <td><a href="toupdate.do?id=${item.id}">修改</a>||<a href="del.do?id=${item.id}">删除</a>||<a href="sel.do?id=${item.id}">查看</a>||<a href="toupdatemsproductstate?id=${item.id}">审核</a></td>||<a href="/productdetail/toadd.do?productid=${item.productid}&&merchantid=${item.merchantid}">添加商品详情</a>||<a href="/productdetail/selbyproid.do?productid=${item.productid}">查看商品详情</a>||<a href="/productdetail/toupdate.do?productid=${item.productid}">修改商品详情</a></td>
         </tr>
     </c:forEach>
 </table>

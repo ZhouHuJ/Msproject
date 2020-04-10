@@ -3,15 +3,15 @@ package com.itdr.service;
 import com.itdr.pojo.ProductDetail;
 
 public interface ProductDetailService {
-    int deleteByPrimaryKey(Integer id);
+    //int deleteByPrimaryKey(Integer id);
 
-    int insert(ProductDetail productDetail);
+    void insert(ProductDetail productDetail);
 
-    int insertSelective(ProductDetail productDetail);
+    void insertSelective(ProductDetail productDetail);
 
-    ProductDetail selectByPrimaryKey(Integer id);
+    ProductDetail selectByPrimaryKey(Integer productid);
 
-    int updateByPrimaryKeySelective(ProductDetail productDetail);
+    void updateByPrimaryKeySelective(ProductDetail productDetail);
 
-    int updateByPrimaryKey(ProductDetail productDetail);
+    void updateByPrimaryKey(ProductDetail productDetail);
 }

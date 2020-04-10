@@ -25,6 +25,18 @@
     from msorder
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectorderByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from msorder
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectorderByMerchantid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from msorder
+    where merchantid = #{merchantid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from msorder
     where id = #{id,jdbcType=INTEGER}

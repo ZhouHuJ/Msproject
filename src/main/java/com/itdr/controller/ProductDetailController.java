@@ -14,25 +14,36 @@ public class ProductDetailController {
     @Autowired
     ProductDetailService productDetailService;
 
+    @RequestMapping("toadd.do")
+    public String toadd(HttpServletRequest request,int productid,int merchantid){
+        request.setAttribute("productid",productid);
+        request.setAttribute("merchantid",merchantid);
+        return "productdetail/add";
+    }
+
     @RequestMapping("add.do")
-    public void add(ProductDetail productDetail){
-        System.out.println(productDetailService.insert(productDetail));
+    public String add(ProductDetail productDetail){
+        productDetailService.insert(productDetail);
+        return "redirect:/product/selbyvo.do";
+    }
+
+    @RequestMapping("toupdate.do")
+    public String toupdate(HttpServletRequest request,int productid){
+        ProductDetail productDetail = productDetailService.selectByPrimaryKey(productid);
+        request.setAttribute("productDetail",productDetail);
+        return "productdetail/update";
     }
 
     @RequestMapping("update.do")
-    public void  update(ProductDetail productDetail){
-        System.out.println(productDetailService.updateByPrimaryKeySelective(productDetail));
+    public String  update(ProductDetail productDetail){
+        productDetailService.updateByPrimaryKeySelective(productDetail);
+        return "redirect:/product/selbyvo.do";
     }
 
-    @RequestMapping("del.do")
-    public void  del(int id){
-        System.out.println(productDetailService.deleteByPrimaryKey(id));
-    }
-
-    @RequestMapping("sel.do")
-    public String selbyid(HttpServletRequest request, int id){
-        ProductDetail productDetail = productDetailService.selectByPrimaryKey(id);
-        request.setAttribute("merchant",productDetail);
-        return "merchant/view";
+    @RequestMapping("selbyproid.do")
+    public String selbyid(HttpServletRequest request, int productid){
+        ProductDetail productDetail = productDetailService.selectByPrimaryKey(productid);
+        request.setAttribute("productdetail",productDetail);
+        return "productdetail/view";
     }
 }

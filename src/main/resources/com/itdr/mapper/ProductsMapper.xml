@@ -69,8 +69,8 @@
       <if test="constomProduct.startauditdate!=null and constomProduct.startauditdate!='' ">
         and auditdate <![CDATA[ >= ]]> "${constomProduct.startauditdate}"
       </if>
-      <if test="constomProduct.auditstate!=null and constomProduct.auditstate!='' ">
-        and auditdate = "${constomProduct.auditstate}"
+      <if test="constomProduct.auditstatus!=null and constomProduct.auditstatus!='' ">
+        and auditstatus = "${constomProduct.auditstatus}"
       </if>
       <if test="constomProduct.startstarttime!=null and constomProduct.startstarttime!='' ">
         and starttime <![CDATA[ >= ]]> "${constomProduct.startstarttime}"

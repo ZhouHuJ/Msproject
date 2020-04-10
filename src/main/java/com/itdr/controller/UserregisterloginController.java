@@ -20,12 +20,11 @@ public class UserregisterloginController {
     //用户注册
     @RequestMapping("toregister.do")
     public String toregister(){
-        System.out.println(1);
         return "user/register";
     }
 
     @RequestMapping(value = "register.do",method = RequestMethod.POST)
-    public String register(Users user){
+    public String register(Users user,String zzz){
         userService.insert(user);
         return "/homepage/homepage";
     }
@@ -50,7 +49,7 @@ public class UserregisterloginController {
             request.setAttribute("errorinfo", "密码错误");
         }else{
             HttpSession sess = request.getSession();
-            sess.setAttribute("users", userresult);
+            sess.setAttribute("user", userresult);
             returnurl = "homepage/homepage";
         }
         return returnurl;

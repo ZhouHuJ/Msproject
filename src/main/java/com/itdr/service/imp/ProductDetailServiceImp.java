@@ -12,37 +12,37 @@ public class ProductDetailServiceImp implements ProductDetailService {
 
     @Autowired
     ProductDetailMapper productDetailMapper;
-
+    /*
     @Override
     public int deleteByPrimaryKey(Integer id) {
         int i = productDetailMapper.deleteByPrimaryKey(id);
         return i;
     }
+    */
 
     @Override
-    public int insert(ProductDetail productDetail) {
-        int i = productDetailMapper.insert(productDetail);
-        return i;
+    public void insert(ProductDetail productDetail) {
+        productDetailMapper.insert(productDetail);
     }
 
     @Override
-    public int insertSelective(ProductDetail productDetail) {
-        return 0;
+    public void insertSelective(ProductDetail productDetail) {
+
     }
 
     @Override
-    public ProductDetail selectByPrimaryKey(Integer id) {
-        return productDetailMapper.selectByPrimaryKey(id);
+    public ProductDetail selectByPrimaryKey(Integer productid) {
+        return productDetailMapper.selectByPrimaryKey(productid);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(ProductDetail productDetail) {
-        int i = productDetailMapper.updateByPrimaryKeySelective(productDetail);
-        return i;
+    public void updateByPrimaryKeySelective(ProductDetail productDetail) {
+        productDetailMapper.updateByPrimaryKeySelective(productDetail);
+
     }
 
     @Override
-    public int updateByPrimaryKey(ProductDetail productDetail) {
-        return 0;
+    public void updateByPrimaryKey(ProductDetail productDetail) {
+
     }
 }
