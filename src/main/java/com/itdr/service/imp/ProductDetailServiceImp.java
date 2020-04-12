@@ -45,4 +45,9 @@ public class ProductDetailServiceImp implements ProductDetailService {
     public void updateByPrimaryKey(ProductDetail productDetail) {
 
     }
+
+    @Override
+    public void deleteByProductid(int productid) {
+        productDetailMapper.deleteByProductid(productid);
+    }
 }

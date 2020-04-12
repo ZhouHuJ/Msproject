@@ -5,7 +5,7 @@
   Time: 14:28
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -17,7 +17,7 @@
     商品图片地址:<input name="productpicture"></br>
     秒杀价格:<input name="miaoshaprice"></br>
     商品原价:<input name="originalprice"></br>
-    商家id:<input name="merchantid"></br>
+    <input type="hidden" name="merchantid" value="${merchant.id}">
     秒杀开始时间:<input type="date" name="starttimestring"></br>
     秒杀结束时间:<input type="date" name="endtimestring"></br>
     秒杀商品数量:<input name="productcount"></br>

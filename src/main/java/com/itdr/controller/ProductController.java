@@ -2,6 +2,7 @@ package com.itdr.controller;
 
 import com.itdr.pojo.vo.ProductVo;
 import com.itdr.pojo.Products;
+import com.itdr.service.ProductDetailService;
 import com.itdr.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -16,6 +19,9 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+
+    @Autowired
+    ProductDetailService productDetailService;
 
     @RequestMapping(value="toapplyproduct.do")
     public String toApplymsproduct(){
@@ -52,6 +58,7 @@ public class ProductController {
     @RequestMapping("del.do")
     public String  del(int id){
         productService.deleteByPrimaryKey(id);
+        productDetailService.deleteByProductid(id);
         return "redirect:selbyvo.do";
     }
 
@@ -60,5 +67,18 @@ public class ProductController {
         Products product = productService.selectByPrimaryKey(id);
         request.setAttribute("product",product);
         return "product/view";
+    }
+
+    @RequestMapping(value = "updateproductstate.do")
+    public String  updateproductstate(Products product){
+        if(true){                            //审核条件
+            product.setAuditstatus(2);
+        }else{
+            product.setAuditstatus(3);
+        }
+        Date auditdate = new Date();
+        product.setAuditdate(auditdate);
+        productService.updateByPrimaryKeySelective(product);
+        return "redirect:selbyvo.do";
     }
 }

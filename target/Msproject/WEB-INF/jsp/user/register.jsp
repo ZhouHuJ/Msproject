@@ -19,7 +19,6 @@
     用户年龄：<input name="userage"></br>
     用户地址：<input name="useraddress"></br>
     用户邮箱：<input name="useremail"></br>
-    zzzzzzzz:<input name="zzz"></br>
     <input type="submit" value="注册" >
 </form>
 </body>

@@ -35,6 +35,9 @@
       <if test="constomProduct.productid!=null and constomProduct.productid!=''">
         and productid = "${constomProduct.productid}"
       </if>
+      <if test="constomProduct.productid!=null and constomProduct.productid!=''">
+        and merchantid = "${constomProduct.merchantid}"
+      </if>
       <if test="constomProduct.producttitle!=null and constomProduct.producttitle!='' ">
         and producttitle  like "%${constomProduct.producttitle}%"
       </if>

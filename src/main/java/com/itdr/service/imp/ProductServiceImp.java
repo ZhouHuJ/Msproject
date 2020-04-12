@@ -36,7 +36,7 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public void deleteByPrimaryKey(Integer id) {
-        productsMapper.deleteByPrimaryKey(id);
+    productsMapper.deleteByPrimaryKey(id);
     }
 
     @Override

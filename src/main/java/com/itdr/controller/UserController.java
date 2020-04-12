@@ -63,4 +63,9 @@ public class UserController {
         request.setAttribute("userlist", list);
         return "user/list";
     }
+
+    @RequestMapping("toUserHomePage.do")
+    public String toUserHomePage(){
+        return "user/homepage";
+    }
 }

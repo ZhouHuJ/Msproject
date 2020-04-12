@@ -186,42 +186,4 @@
       tradeserialnumble = #{tradeserialnumble,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateorderpaystatusByid" parameterType="com.itdr.pojo.Orders" >
-    update msorder
-    set
-    <if test="productid != null" >
-      productid = #{productid,jdbcType=INTEGER},
-    </if>
-    <if test="payamount != null" >
-      payamount = #{payamount,jdbcType=INTEGER},
-    </if>
-    <if test="userid != null" >
-      userid = #{userid,jdbcType=INTEGER},
-    </if>
-    <if test="merchantid != null" >
-      merchantid = #{merchantid,jdbcType=INTEGER},
-    </if>
-    <if test="createtime != null" >
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-    </if>
-    <if test="paytime != null" >
-      paytime = #{paytime,jdbcType=TIMESTAMP},
-    </if>
-    <if test="paystatus != null" >
-      paystatus = #{paystatus,jdbcType=INTEGER},
-    </if>
-    <if test="receivingaddress != null" >
-      receivingaddress = #{receivingaddress,jdbcType=VARCHAR},
-    </if>
-    <if test="receivingphone != null" >
-      receivingphone = #{receivingphone,jdbcType=INTEGER},
-    </if>
-    <if test="receivingname != null" >
-      receivingname = #{receivingname,jdbcType=VARCHAR},
-    </if>
-    <if test="tradeserialnumble != null" >
-      tradeserialnumble = #{tradeserialnumble,jdbcType=VARCHAR},
-    </if>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
 </mapper>

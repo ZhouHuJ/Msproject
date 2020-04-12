@@ -27,7 +27,7 @@ public class MerchantregisterloginController {
     @RequestMapping(value = "register.do",method = RequestMethod.POST)
     public String register(Merchant merchant){
         merchantService.insert(merchant);
-        return "/adminpagehome/homepage";
+        return "redirect:/merchantregisterlogin/tologin.do";
     }
 
     //商家登入
@@ -38,29 +38,27 @@ public class MerchantregisterloginController {
 
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
     public String login(HttpServletRequest request, Merchant merchant){
-        String returnurl = "adminpagehome/error";
         String merchantaccount = merchant.getMerchantaccount();
         String merchantpassword = merchant.getMerchantpassword();
         Merchant merchantresult = merchantService.selectBymerchantaccount(merchantaccount);
         if (merchantresult == null){
-            System.out.println("商家不存在");
             request.setAttribute("errorinfo", "商家不存在");
+            return "forward:/merchantregisterlogin/tologin.do";
         }else if(!merchantresult.getMerchantpassword().equals(merchantpassword)){
-            
             request.setAttribute("errorinfo", "密码错误");
+            return "forward:/merchantregisterlogin/tologin.do";
         }else{
             HttpSession sess = request.getSession();
-            sess.setAttribute("users", merchantresult);
-            returnurl = "adminpagehome/homepage";
+            sess.setAttribute("merchant", merchantresult);
+            return  "redirect:/pagehome/tohome.do";
         }
-        return returnurl;
     }
 
     //用户退出登入
     @RequestMapping(value = "exit.do")
     public String exit(HttpServletRequest request){
         HttpSession sess = request.getSession();
-        sess.removeAttribute("users");
-        return "adminpagehome/homepage";
+        sess.removeAttribute("merchant");
+        return "redirect:http://localhost:8080";
     }
 }

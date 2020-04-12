@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/order/topay.do">
+<form action="/order/topay.do" >
     购买数量：<input type="text" name="num" >
     <input type="hidden" name="id" value="${product.id}">
     <table border="1">
@@ -23,7 +23,6 @@
             <td>秒杀开始时间</td>
             <td>秒杀结束时间</td>
             <td>秒杀商品数</td>
-            <td>秒杀数量</td>
             <td>库存</td>
         </tr>
         <tr>
@@ -55,7 +54,8 @@
             <td>${productDetail.productdetailpicture}</td>
         </tr>
     </table>
-    <input type="submit" value="立即购买">
+    </br>
+    <input type="submit" value="立即购买">&nbsp&nbsp&nbsp&nbsp<a href="/pagehome/tohome.do"><input type="button" value="返回秒杀商品列表"></a>
 </form>
 </body>
 </html>

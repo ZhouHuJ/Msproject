@@ -5,6 +5,8 @@ import com.itdr.pojo.ProductDetail;
 public interface ProductDetailMapper {
     int deleteByPrimaryKey(Integer id);
 
+    int deleteByProductid(Integer productid);
+
     int insert(ProductDetail record);
 
     int insertSelective(ProductDetail record);

@@ -12,17 +12,28 @@
     <title>Title</title>
 </head>
 <body>
-<center><a href="toapplyproduct.do">申请秒杀商品</a></center>
+<%if(session.getAttribute("user")!=null){%>
+欢迎：${user.useraccount}
+<a href="/user/toUserHomePage.do">主页</a>
+<a href="/registerlogin/exit.do">退出登录</a>
+<%}else if(session.getAttribute("merchant")!=null){%>
+欢迎：${merchant.merchantaccount}
+<a href="/merchant/toMerchantHomePage.do">主页</a>
+<a href="/merchantregisterlogin/exit.do">退出登录</a>
+<%}else {
+    response.sendRedirect("http://localhost:8080");
+}%>
+
 <table border="2">
     <tr>
         <td>商品id</td>
         <td>商品标题</td>
         <td>图片地址</td>
-        <td>秒杀价格</td>
         <td>商家id</td>
+        <td>秒杀价格</td>
         <td>秒杀原价</td>
         <td>申请时间</td>
-        <td>转态</td>
+        <td>状态</td>
         <td>秒杀开始时间</td>
         <td>秒杀结束时间</td>
         <td>秒杀商品数</td>
@@ -32,11 +43,11 @@
     </tr>
     <c:forEach items="${productlist}" var="item">
         <tr>
-            <td>${item.productid }</td>
+            <td>${item.id }</td>
             <td>${item.producttitle }</td>
             <td>${item.productpicture }</td>
-            <td>${item.miaoshaprice }</td>
             <td>${item.merchantid }</td>
+            <td>${item.miaoshaprice }</td>
             <td>${item.originalprice }</td>
             <td>${item.applydate }</td>
             <td>${item.auditstatus }</td>
@@ -45,9 +56,11 @@
             <td>${item.productcount }</td>
             <td>${item.stockcount }</td>
             <td>${item.description }</td>
-            <td><a href="toupdate.do?id=${item.id}">修改</a>||<a href="del.do?id=${item.id}">删除</a>||<a href="sel.do?id=${item.id}">查看</a>||<a href="toupdatemsproductstate?id=${item.id}">审核</a></td>||<a href="/productdetail/toadd.do?productid=${item.productid}&&merchantid=${item.merchantid}">添加商品详情</a>||<a href="/productdetail/selbyproid.do?productid=${item.productid}">查看商品详情</a>||<a href="/productdetail/toupdate.do?productid=${item.productid}">修改商品详情</a></td>
+            <td>商品：<a href="toupdate.do?id=${item.id}">修改</a>&nbsp&nbsp&nbsp&nbsp<a href="del.do?id=${item.id}">删除</a>&nbsp&nbsp&nbsp&nbsp<a href="sel.do?id=${item.id}">查看</a>&nbsp&nbsp&nbsp&nbsp<a href="updateproductstate.do?id=${item.id}">审核</a>&nbsp&nbsp&nbsp&nbsp</br>商品详情：<a href="/productdetail/toadd.do?productid=${item.id}&&merchantid=${item.merchantid}">添加</a>&nbsp&nbsp&nbsp<a href="/productdetail/selbyproid.do?productid=${item.id}">查看</a>&nbsp&nbsp&nbsp<a href="/productdetail/toupdate.do?productid=${item.id}">修改</a></td>
         </tr>
     </c:forEach>
 </table>
+</br>
+<a href="/product/toapplyproduct.do"><input type="button" value="商品申请"></a>
 </body>
 </html>

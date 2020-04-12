@@ -27,7 +27,7 @@ public class PagehomeController {
     ProductDetailService productDetailService;
 
     @RequestMapping("tohome.do")
-    public String tohome(HttpServletRequest request){
+    public String  tohome(HttpServletRequest request){
         ProductVo productVo = new ProductVo();
         ConstomProduct constomProduct = new ConstomProduct();
         Date now = new Date();
@@ -36,19 +36,17 @@ public class PagehomeController {
         constomProduct.setStartendtime(nowstring);
         constomProduct.setAuditstatus(2);
         productVo.setConstomProduct(constomProduct);
-//		private Date startstarttime;//��ɱ��ʼʱ���ѯ��Χ��ʼʱ��
-//		private Date endstarttime;//��ɱ��ʼʱ���ѯ��Χ����ʱ��
         List<Products> list = productService.selectByvo(productVo);
         request.setAttribute("list", list);
         return "homepage/homepage";
     }
 
     @RequestMapping("viewproductdetail.do")
-    public String viewproductdetail(HttpServletRequest req,int id){
+    public String viewproductdetail(HttpServletRequest request,int id){
         Products product = productService.selectByPrimaryKey(id);
-        ProductDetail productDetail = productDetailService.selectByPrimaryKey(product.getProductid());
-        req.setAttribute("product", product);
-        req.setAttribute("productDetail", productDetail);
+        ProductDetail productDetail = productDetailService.selectByPrimaryKey(product.getId());
+        request.setAttribute("product", product);
+        request.setAttribute("productDetail", productDetail);
         return "order/selldetail";
     }
 }

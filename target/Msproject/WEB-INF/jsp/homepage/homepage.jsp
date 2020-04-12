@@ -12,12 +12,22 @@
     <title>Title</title>
 </head>
 <body>
-欢迎：${user.useraccount}
-</br>
-<a href="/registerlogin/toregister.do">注册</a></br>
-<a href="/registerlogin/tologin.do">登录</a>
-<a href="/registerlogin/exit.do">退出登录</a>
 
+</br>
+
+<%if(session.getAttribute("user")!=null){%>
+欢迎：${user.useraccount}
+<a href="/user/toUserHomePage.do">主页</a>
+<a href="/registerlogin/exit.do">退出登录</a>
+<%}else if(session.getAttribute("merchant")!=null){%>
+欢迎：${merchant.merchantaccount}
+<a href="/merchant/toMerchantHomePage.do">主页</a>
+<a href="/merchantregisterlogin/exit.do">退出登录</a>
+<%}else{%>
+<a href="/registerlogin/tologin.do">用户登入、注册</a></br>
+<a href="/merchantregisterlogin/tologin.do">商家登入、注册</a>
+<%}%>
+<h1>秒杀商品</h1>
 <table border="2">
     <c:forEach items="${list}" var="item">
         <tr>

@@ -14,4 +14,6 @@ public interface ProductDetailService {
     void updateByPrimaryKeySelective(ProductDetail productDetail);
 
     void updateByPrimaryKey(ProductDetail productDetail);
+
+    void deleteByProductid(int productid);
 }

@@ -24,5 +24,6 @@
 秒杀数量: ${product.productcount }</br>
 秒杀的库存: ${product.stockcount }</br>
 秒杀的描述: ${product.description }</br>
+<a href="/product/selbyvo.do?merchantid=${merchant.id}"><input type="button" value="返回该商家商品列表" ></a>
 </body>
 </html>

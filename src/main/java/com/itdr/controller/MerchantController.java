@@ -66,4 +66,9 @@ public class MerchantController {
         request.setAttribute("merchantlist", list);
         return "merchant/list";
     }
+
+    @RequestMapping("toMerchantHomePage.do")
+    public String toMerchantHomePage(){
+        return "merchant/homepage";
+    }
 }

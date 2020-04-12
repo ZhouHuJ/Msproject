@@ -12,7 +12,18 @@
     <title>Title</title>
 </head>
 <body>
-<center><a href="toadd.do">添加商家</a></center>
+<%if(session.getAttribute("user")!=null){%>
+欢迎：${user.useraccount}
+<a href="/user/toUserHomePage.do">主页</a>
+<a href="/registerlogin/exit.do">退出登录</a>
+<%}else if(session.getAttribute("merchant")!=null){%>
+欢迎：${merchant.merchantaccount}
+<a href="/merchant/toMerchantHomePage.do">主页</a>
+<a href="/merchantregisterlogin/exit.do">退出登录</a>
+<%}else {
+    response.sendRedirect("http://localhost:8080");
+}%>
+
 <table border="2">
     <tr>
         <td>商家的姓名</td>

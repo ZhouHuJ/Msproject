@@ -26,6 +26,10 @@
     delete from msproductdetail
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByProductid" parameterType="java.lang.Integer" >
+    delete from msproductdetail
+    where productid = #{productid,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.itdr.pojo.ProductDetail" >
     insert into msproductdetail (id, productid, merchantid, 
       productplace, productname, brandname, 

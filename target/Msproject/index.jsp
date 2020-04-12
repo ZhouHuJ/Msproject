@@ -3,11 +3,9 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<form action="/pagehome/tohome.do" method="post">
-
-    <input type="submit" value="提交" >
-</form>
+<br>
+<a href="/registerlogin/tologin.do">用户登入、注册</a></br>
+<a href="/merchantregisterlogin/tologin.do">商家登入、注册</a>
 </body>
 
 </html>

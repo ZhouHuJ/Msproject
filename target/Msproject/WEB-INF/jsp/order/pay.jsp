@@ -11,11 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/order/pay.do">
+<form action="/order/pay.do" method="post">
     商品名称：${product.producttitle}
     购买数量：${productnum}
     支付总额：${payamount}
-    <input type="hidden" name="productid" value="${product.productid}">
+    <input type="hidden" name="productid" value="${product.id}">
     <input type="hidden" name="userid" value="${userid}">
     <input type="hidden" name="merchantid" value="${product.merchantid}">
     <input type="hidden" name="payamount" value="${payamount}">
@@ -24,7 +24,7 @@
     收货人地址:<input type="text" name="receivingaddress"></br>
     收货人电话:<input type="text" name="receivingphone"></br>
     收货人名称:<input type="text" name="receivingname"></br>
-    <input type="submit" value="立即付款">
+    <input type="submit" value="生成订单">
 </form>
 </body>
 </html>
